@@ -1,0 +1,20 @@
+{
+  "name": "rig-assistant",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently --kill-others-on-fail --names CLIENT,MASTRA,MCP,STT \"pnpm --dir rig-ctl-web dev\" \"pnpm --dir mastra dev\" \"pnpm --dir rig-server dev\" \"pnpm run dev:stt\"",
+
+    "dev:stt": "stt\\venv\\Scripts\\python.exe -m uvicorn stt.app:app --reload --port 8000"
+  },
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": "^11.15.1",
+      "onFail": "download"
+    }
+  },
+  "type": "module",
+  "devDependencies": {
+    "concurrently": "^9"
+  }
+}
